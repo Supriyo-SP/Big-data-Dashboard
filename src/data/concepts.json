@@ -1,0 +1,114 @@
+[
+  {
+    "id": "hadoop",
+    "title": "Hadoop",
+    "category": "Ecosystem",
+    "description": "An open-source framework that allows for the distributed processing of large data sets across clusters of computers.",
+    "keyPoints": [
+      "Fault-tolerant and highly available",
+      "Highly scalable",
+      "Uses MapReduce programming model for processing"
+    ],
+    "useCases": ["Batch data processing", "Log analysis", "Web indexing", "Data archiving"],
+    "pros": ["Cost-effective for large scale data", "Scalable on commodity hardware", "Resilient to failures"],
+    "cons": ["High latency", "Complex to setup and manage", "Not suitable for real-time processing"],
+    "relatedConcepts": ["HDFS", "Spark", "batch-vs-streaming"],
+    "comparisonTags": ["Batch", "Disk-based"]
+  },
+  {
+    "id": "hdfs",
+    "title": "HDFS",
+    "category": "Storage",
+    "description": "The Hadoop Distributed File System is the primary data storage system used by Hadoop. It distributes data across multiple machines.",
+    "keyPoints": [
+      "Breaks data into blocks (typically 128MB)",
+      "Replicates data across multiple nodes for fault tolerance",
+      "Write-once, read-many semantics"
+    ],
+    "useCases": ["Storing big data sets", "Archival storage", "Data lakes foundation"],
+    "pros": ["Handles massive datasets easily", "High fault-tolerance", "High throughput data access"],
+    "cons": ["Poor performance for small files", "Not for low-latency data access", "No concurrent writers"],
+    "relatedConcepts": ["Hadoop", "datalake-vs-datawarehouse"],
+    "comparisonTags": ["Storage", "Disk-based"]
+  },
+  {
+    "id": "spark",
+    "title": "Apache Spark",
+    "category": "Processing",
+    "description": "A unified analytics engine for large-scale data processing, with built-in modules for streaming, SQL, machine learning, and graph processing.",
+    "keyPoints": [
+      "In-memory data processing",
+      "Supports multiple languages (Python, Scala, Java, R)",
+      "Up to 100x faster than Hadoop MapReduce in memory"
+    ],
+    "useCases": ["Interactive analytics", "Real-time stream processing", "Machine Learning at scale"],
+    "pros": ["Extremely fast due to in-memory processing", "Easy to use APIs (DataFrames, RDDs)", "Versatile (Batch and Steaming in one framework)"],
+    "cons": ["High memory consumption", "More expensive to run than MapReduce for batch", "Complex memory management tuning needed"],
+    "relatedConcepts": ["Hadoop", "Kafka", "batch-vs-streaming"],
+    "comparisonTags": ["Batch", "Streaming", "In-memory"]
+  },
+  {
+    "id": "kafka",
+    "title": "Apache Kafka",
+    "category": "Streaming",
+    "description": "A distributed event streaming platform used for high-performance data pipelines, streaming analytics, and data integration.",
+    "keyPoints": [
+      "Publish/Subscribe messaging model based on topics",
+      "High throughput and extremely low latency",
+      "Stores streams of records safely in a fault-tolerant way"
+    ],
+    "useCases": ["Real-time data ingestion", "Log aggregation", "Stream processing", "Event sourcing"],
+    "pros": ["Massive throughput capabilities", "Highly scalable", "Durable and fault-tolerant"],
+    "cons": ["Steep learning curve", "Requires careful management (historically needs ZooKeeper)", "Overkill for simple messaging systems"],
+    "relatedConcepts": ["Spark", "batch-vs-streaming"],
+    "comparisonTags": ["Streaming", "Real-time"]
+  },
+  {
+    "id": "batch-vs-streaming",
+    "title": "Batch vs Streaming",
+    "category": "Processing Paradigm",
+    "description": "Different data processing approaches: Batch processes data in large sequential chunks at scheduled intervals, while Streaming processes data continuously as it arrives.",
+    "keyPoints": [
+      "Batch is built for high volume, non-interactive execution",
+      "Streaming is built for low latency, continuous execution",
+      "Lambda and Kappa architectures often combine or standardize them"
+    ],
+    "useCases": ["Batch: Payroll processing, Monthly billing reports, Machine learning training", "Streaming: Fraud detection, Live system monitoring, Real-time recommendations"],
+    "pros": ["Batch: Simpler to implement, handles massive historical volume easily", "Streaming: Immediate insights, real-time responsive actions"],
+    "cons": ["Batch: Cannot provide immediate answers (high latency)", "Streaming: Harder to handle late/out-of-order data, complex state management"],
+    "relatedConcepts": ["Hadoop", "Kafka", "Spark"],
+    "comparisonTags": ["Paradigm"]
+  },
+  {
+    "id": "sql-vs-nosql",
+    "title": "SQL vs NoSQL",
+    "category": "Database Paradigm",
+    "description": "SQL databases are relational with a predefined schema and ACID guarantees. NoSQL databases are non-relational, providing flexible schemas for unstructured data at vast scale.",
+    "keyPoints": [
+      "SQL enforces referential integrity and structured schemas",
+      "NoSQL scales horizontally easily across distributed clusters",
+      "NoSQL types include document, key-value, graph, and wide-column"
+    ],
+    "useCases": ["SQL: Financial transactions, ERP systems, strict schema requirements", "NoSQL: E-commerce catalogs, real-time big data feeds, varied schema storage"],
+    "pros": ["SQL: Mature, standardized querying, strong consistency", "NoSQL: Highly flexible, highly available, optimized for specific access patterns"],
+    "cons": ["SQL: Difficult to scale horizontally, rigid schemas", "NoSQL: Looser consistency models (BASE), diverse non-standard APIs"],
+    "relatedConcepts": ["datalake-vs-datawarehouse", "hdfs"],
+    "comparisonTags": ["Storage"]
+  },
+  {
+    "id": "datalake-vs-datawarehouse",
+    "title": "Data Lake vs Data Warehouse",
+    "category": "Architecture",
+    "description": "A Data Warehouse stores highly structured, processed data for direct BI querying. A Data Lake stores massive amounts of raw, unstructured, or semi-structured data for future use.",
+    "keyPoints": [
+      "Warehouse: Schema-on-write (data is structured upon entry)",
+      "Lake: Schema-on-read (data is interpreted when read)",
+      "Modern setups often use a 'Lakehouse' approach bridging the two"
+    ],
+    "useCases": ["Warehouse: Business Intelligence, Executive reporting dashboards", "Lake: Exploratory data science, Machine Learning, raw data archiving"],
+    "pros": ["Warehouse: Fast performance for complex queries, high trust in data quality", "Lake: Can store any data type (images, logs, JSON), lower storage cost per GB"],
+    "cons": ["Warehouse: Expensive and slow to add new data types", "Lake: Can turn into an unusable 'data swamp' without strict governance"],
+    "relatedConcepts": ["hdfs", "sql-vs-nosql"],
+    "comparisonTags": ["Architecture"]
+  }
+]
